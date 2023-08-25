@@ -1,3 +1,4 @@
+import { fetchData } from "@/servises/fetchData";
 import { Metadata } from "next";
 import React from "react";
 
@@ -21,6 +22,14 @@ export async function generateMetadata({
     title: post.title,
     description: post?.body,
   };
+}
+
+export async function generateStaticParams() {
+  const posts: any = await fetchData();
+
+  return posts.map((post: any) => ({
+    slug: post.id.toString(),
+  }));
 }
 
 interface Props {

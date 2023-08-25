@@ -3,6 +3,7 @@ import TheHeader from "@/Components/TheHeader";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Open_Sans } from "next/font/google";
+import Providers from "@/Components/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 const openSans = Open_Sans({ subsets: ["latin"] });
@@ -20,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={openSans.className}>
-        <TheHeader />
-        <main className="container">{children}</main>
-        <TheFooter />
+        <Providers>
+          <TheHeader />
+          <main className="container">{children}</main>
+          <TheFooter />
+        </Providers>
       </body>
     </html>
   );
